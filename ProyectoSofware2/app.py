@@ -49,9 +49,21 @@ def clientes():
 
 @app.route('/nuevo_cliente', methods=['GET', 'POST'])
 def nuevo_cliente():
+    error = None
     if request.method == 'POST':
         db = conectar_db()
         cursor = db.cursor()
+        
+        # Verificar si el correo ya existe
+        cursor.execute("SELECT * FROM clientes WHERE correo = ?", (request.form['correo'],))
+        cliente_existente = cursor.fetchone()
+        
+        if cliente_existente:
+            error = "El correo electrónico ya está registrado. Por favor, use otro correo."
+            db.close()
+            return render_template('nuevo_cliente.html', error=error)
+        
+        # Si no existe, insertar el nuevo cliente
         cursor.execute("INSERT INTO clientes (nombre_completo, telefono, correo, contraseña) VALUES (?, ?, ?, ?)", 
                       (request.form['nombre_completo'], request.form['telefono'], request.form['correo'], request.form['contraseña']))
         db.commit()
