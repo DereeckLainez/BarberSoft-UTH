@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Barberos - BarberSoft Premium</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --barber-gold: #c5a059;
+            --gold-hover: #a38445;
+            --gold-light: #d4b575;
+            --bg-dark: #0a0a0a;
+            --bg-card: rgba(15, 15, 15, 0.95);
+            --text-main: #e0e0e0;
+            --text-muted: #9e9e9e;
+            --text-muted-premium: #b0b0b0;
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body { 
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(197, 160, 89, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 0, 0, 0.3) 0%, transparent 50%),
+                linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%),
+                url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=2070');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            font-family: 'Roboto', sans-serif; color: var(--text-main); overflow-x: hidden;
+        }
+
+        /* Partículas de fondo */
+        .particles {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; overflow: hidden; z-index: 1;
+        }
+
+        .particle {
+            position: absolute; width: 3px; height: 3px; background: var(--barber-gold);
+            border-radius: 50%; opacity: 0.4; animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            33% { transform: translateY(-40px) translateX(30px); }
+            66% { transform: translateY(30px) translateX(-30px); }
+        }
+
+        /* NAVBAR MEJORADO */
+        .navbar { 
+            background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(15,15,15,0.98) 100%) !important;
+            border-bottom: 2px solid rgba(197, 160, 89, 0.4); 
+            padding: 20px 0; backdrop-filter: blur(20px); z-index: 1000;
+        }
+        .navbar-brand { 
+            font-family: 'Playfair Display', serif; color: var(--barber-gold) !important; 
+            font-size: 2rem; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            transition: var(--transition-smooth);
+        }
+        .navbar-brand:hover { color: var(--gold-light) !important; transform: scale(1.05); }
+        .btn-back { 
+            border: 1px solid rgba(197, 160, 89, 0.3); color: var(--barber-gold); 
+            border-radius: 8px; text-transform: uppercase; font-size: 0.8rem; 
+            padding: 10px 24px; transition: var(--transition-smooth); text-decoration: none;
+            background: rgba(197, 160, 89, 0.05);
+        }
+        .btn-back:hover { 
+            border-color: var(--barber-gold); color: #000; background: var(--barber-gold);
+            transform: translateY(-2px); box-shadow: 0 8px 25px rgba(197, 160, 89, 0.3);
+        }
+
+        /* HEADER MEJORADO */
+        .header-section { 
+            background: 
+                linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.9)), 
+                url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=2070');
+            background-size: cover; background-position: center; padding: 100px 0 80px;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2); text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .header-section::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(197, 160, 89, 0.1) 0%, transparent 100%);
+        }
+        .header-section h2 { 
+            font-family: 'Playfair Display', serif; color: var(--barber-gold); 
+            font-size: 4rem; text-transform: uppercase; letter-spacing: 5px;
+            margin-bottom: 20px; animation: fadeInDown 1s ease-out;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.5);
+        }
+        .slogan-premium { 
+            font-size: 1.2rem; color: var(--text-muted-premium); text-transform: uppercase; 
+            letter-spacing: 3px; border-top: 2px solid rgba(197, 160, 89, 0.3); 
+            display: inline-block; padding-top: 15px; animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        .header-icon {
+            font-size: 4rem; color: var(--barber-gold); margin-bottom: 20px;
+            animation: bounceIn 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes bounceIn { 0% { transform: scale(0.3); opacity: 0; } 50% { transform: scale(1.05); } 70% { transform: scale(0.9); } 100% { transform: scale(1); opacity: 1; } }
+
+        /* ESTADÍSTICAS */
+        .stats-container {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px; margin: -50px 0 50px; padding: 0 20px; position: relative; z-index: 10;
+        }
+        .stat-card {
+            background: var(--bg-card); border: 1px solid rgba(197, 160, 89, 0.2);
+            border-radius: 16px; padding: 30px; text-align: center;
+            backdrop-filter: blur(20px); transition: var(--transition-smooth);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            animation: slideInUp 0.8s ease-out;
+        }
+        .stat-card:hover {
+            transform: translateY(-10px); border-color: var(--barber-gold);
+            box-shadow: 0 20px 50px rgba(197, 160, 89, 0.2);
+        }
+        .stat-icon {
+            font-size: 3rem; color: var(--barber-gold); margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+        .stat-number { font-size: 2.5rem; font-weight: 700; color: var(--barber-gold); margin-bottom: 5px; }
+        .stat-label { color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; }
+
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* TABLA MEJORADA */
+        .table-container { 
+            background: var(--bg-card); border: 1px solid rgba(197, 160, 89, 0.3);
+            border-radius: 20px; padding: 40px; margin: 20px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.7); backdrop-filter: blur(20px);
+            animation: fadeIn 1s ease-out 0.5s both; position: relative; overflow: hidden;
+        }
+        .table-container::before {
+            content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, var(--barber-gold), transparent, var(--barber-gold));
+            border-radius: 20px; opacity: 0; transition: var(--transition-smooth); z-index: -1;
+        }
+        .table-container:hover::before { opacity: 0.3; }
+
+        .table-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 35px; flex-wrap: wrap; gap: 20px;
+        }
+        .table-title {
+            display: flex; align-items: center; gap: 15px;
+        }
+        .table-title i { font-size: 2rem; color: var(--barber-gold); }
+        .table-title h4 { 
+            margin: 0; color: var(--text-main); font-size: 1.8rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 2px;
+        }
+
+        .search-box {
+            position: relative; width: 300px;
+        }
+        .search-box input {
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(197, 160, 89, 0.3);
+            border-radius: 25px; color: white; padding: 12px 20px 12px 45px;
+            width: 100%; transition: var(--transition-smooth);
+        }
+        .search-box input:focus {
+            background: rgba(255, 255, 255, 0.08); border-color: var(--barber-gold);
+            outline: none; box-shadow: 0 0 20px rgba(197, 160, 89, 0.2);
+        }
+        .search-box i {
+            position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
+            color: var(--barber-gold); font-size: 1.1rem;
+        }
+
+        .table-responsive {
+            border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .table-premium { 
+            color: var(--text-main) !important; vertical-align: middle; margin-bottom: 0;
+            background: rgba(0,0,0,0.2);
+        }
+        .table-premium thead {
+            background: linear-gradient(135deg, rgba(197, 160, 89, 0.2) 0%, rgba(197, 160, 89, 0.1) 100%);
+        }
+        .table-premium thead th { 
+            border-bottom: 2px solid rgba(197, 160, 89, 0.6); color: var(--barber-gold); 
+            text-transform: uppercase; font-size: 0.85rem; padding: 20px 15px; 
+            font-weight: 700; letter-spacing: 1.5px; position: relative;
+        }
+        .table-premium thead th::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+            height: 2px; background: linear-gradient(90deg, transparent, var(--barber-gold), transparent);
+        }
+        .table-premium tbody tr {
+            transition: var(--transition-smooth); border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .table-premium tbody tr:hover {
+            background: rgba(197, 160, 89, 0.05); transform: scale(1.01);
+            box-shadow: 0 5px 20px rgba(197, 160, 89, 0.1);
+        }
+        .table-premium tbody td { 
+            padding: 25px 15px; border-bottom: 1px solid rgba(255,255,255,0.05);
+            vertical-align: middle;
+        }
+        .table-premium tbody td:first-child {
+            font-weight: 700; color: var(--barber-gold); font-size: 1.1rem;
+        }
+
+        /* AVATARES */
+        .barber-avatar {
+            width: 45px; height: 45px; border-radius: 50%; background: linear-gradient(135deg, var(--barber-gold), var(--gold-hover));
+            display: flex; align-items: center; justify-content: center;
+            color: #000; font-weight: 700; font-size: 1.2rem; margin-right: 15px;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+        }
+        .barber-info { display: flex; align-items: center; }
+        .barber-name { font-weight: 700; color: var(--text-main); margin-bottom: 2px; }
+        .barber-role { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* ESPECIALIDAD BADGE */
+        .especialidad-badge {
+            background: linear-gradient(135deg, rgba(197, 160, 89, 0.2) 0%, rgba(197, 160, 89, 0.1) 100%);
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            color: var(--barber-gold); padding: 8px 16px; border-radius: 20px;
+            font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 1px; transition: var(--transition-smooth);
+        }
+        .especialidad-badge:hover {
+            background: linear-gradient(135deg, rgba(197, 160, 89, 0.3) 0%, rgba(197, 160, 89, 0.2) 100%);
+            transform: translateY(-2px); box-shadow: 0 5px 15px rgba(197, 160, 89, 0.2);
+        }
+
+        /* BOTONES DE ACCIÓN */
+        .action-buttons { display: flex; gap: 8px; justify-content: center; }
+        .btn-gold { 
+            background: linear-gradient(135deg, var(--barber-gold) 0%, var(--gold-hover) 100%);
+            color: #000; font-weight: 700; text-transform: uppercase; 
+            border: none; border-radius: 8px; padding: 14px 28px; 
+            transition: var(--transition-smooth); text-decoration: none; display: inline-flex;
+            align-items: center; gap: 8px; box-shadow: 0 8px 25px rgba(197, 160, 89, 0.3);
+        }
+        .btn-gold:hover { 
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--barber-gold) 100%);
+            color: #000; transform: translateY(-3px); box-shadow: 0 12px 35px rgba(197, 160, 89, 0.4);
+        }
+
+        .btn-edit { 
+            color: #5bc0de; border: 1px solid #5bc0de; border-radius: 8px; 
+            transition: var(--transition-smooth); padding: 8px 16px; font-size: 0.8rem; 
+            text-transform: uppercase; background: rgba(91, 192, 222, 0.1);
+        }
+        .btn-edit:hover { 
+            background: #5bc0de; color: #000; transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(91, 192, 222, 0.3);
+        }
+
+        .btn-delete { 
+            color: #d9534f; border: 1px solid #d9534f; border-radius: 8px;
+            transition: var(--transition-smooth); padding: 8px 16px; font-size: 0.8rem; 
+            text-transform: uppercase; background: rgba(217, 83, 79, 0.1);
+        }
+        .btn-delete:hover { 
+            background: #d9534f; color: #fff; transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(217, 83, 79, 0.3);
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-section h2 { font-size: 2.5rem; }
+            .stats-container { grid-template-columns: 1fr; margin: -30px 0 30px; }
+            .table-container { padding: 20px; margin: 10px; }
+            .table-header { flex-direction: column; align-items: stretch; }
+            .search-box { width: 100%; }
+            .table-premium thead th { font-size: 0.75rem; padding: 15px 10px; }
+            .table-premium tbody td { padding: 15px 10px; font-size: 0.9rem; }
+            .action-buttons { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles">
+        <div class="particle" style="top: 10%; left: 15%; animation-delay: 0s;"></div>
+        <div class="particle" style="top: 20%; left: 85%; animation-delay: 2s;"></div>
+        <div class="particle" style="top: 60%; left: 5%; animation-delay: 4s;"></div>
+        <div class="particle" style="top: 80%; left: 75%; animation-delay: 6s;"></div>
+        <div class="particle" style="top: 30%; left: 45%; animation-delay: 8s;"></div>
+        <div class="particle" style="top: 70%; left: 25%; animation-delay: 10s;"></div>
+        <div class="particle" style="top: 45%; left: 65%; animation-delay: 12s;"></div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/dashboard">
+                <i class="fas fa-cut me-2"></i>BarberSoft
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link btn-back" href="/dashboard">
+                    <i class="fas fa-arrow-left me-2"></i>Volver al Panel
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="header-section">
+        <div class="container">
+            <div class="header-icon">
+                <i class="fas fa-user-tie"></i>
+            </div>
+            <h2>Staff de Barberos</h2>
+            <p class="slogan-premium">Maestros del Estilo y la Navaja</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="stat-number">{{ barberos|length }}</div>
+                <div class="stat-label">Barberos Activos</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="stat-number">5.0</div>
+                <div class="stat-label">Calificación Promedio</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Años de Experiencia</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mb-5 pb-5">
+        <div class="table-container">
+            <div class="table-header">
+                <div class="table-title">
+                    <i class="fas fa-users-cog"></i>
+                    <h4>Equipo Profesional</h4>
+                </div>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar barbero..." id="searchInput">
+                </div>
+            </div>
+            
+            <div class="table-responsive">
+                <table class="table table-premium" id="barberosTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Barbero</th>
+                            <th>Especialidad</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for b in barberos %}
+                        <tr>
+                            <td style="color:var(--barber-gold); font-weight: 700;">
+                                #{{ b.id_barbero }}
+                            </td>
+                            <td>
+                                <div class="barber-info">
+                                    <div class="barber-avatar">
+                                        {{ b.nombre_barbero[0]|upper }}
+                                    </div>
+                                    <div>
+                                        <div class="barber-name">{{ b.nombre_barbero }}</div>
+                                        <div class="barber-role">Maestro Barbero</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="especialidad-badge">
+                                    <i class="fas fa-cut me-1"></i>
+                                    {{ b.especialidad }}
+                                </span>
+                            </td>
+                            <td class="text-center">
+                                <div class="action-buttons">
+                                    <a href="#" class="btn btn-edit">
+                                        <i class="fas fa-edit me-1"></i>Editar
+                                    </a>
+                                    <a href="#" class="btn btn-delete">
+                                        <i class="fas fa-trash me-1"></i>Eliminar
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Función de búsqueda
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            const searchValue = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#barberosTable tbody tr');
+            
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(searchValue) ? '' : 'none';
+            });
+        });
+
+        // Efecto de partículas dinámicas
+        document.addEventListener('DOMContentLoaded', function() {
+            const particles = document.querySelectorAll('.particle');
+            particles.forEach(particle => {
+                setInterval(() => {
+                    const randomX = Math.random() * 100;
+                    const randomY = Math.random() * 100;
+                    particle.style.left = randomX + '%';
+                    particle.style.top = randomY + '%';
+                }, 8000 + Math.random() * 8000);
+            });
+        });
+
+        // Animación de entrada para las filas
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideInUp 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('#barberosTable tbody tr').forEach(row => {
+            row.style.opacity = '0';
+            observer.observe(row);
+        });
+    </script>
+</body>
+</html>

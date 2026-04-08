@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class="hero-section text-center">
+    <div class="container">
+        <p class="hero-subtitle">Est. 2026</p>
+        <h1 class="hero-title">Classic Style & Care</h1>
+        <p class="lead text-white-50">Sistema de Gestión de Élite para la Barbería Moderna</p>
+    </div>
+</header>
+
+<div class="container container-cards">
+    <div class="row g-4">
+        
+        <div class="col-md-4">
+            <div class="card card-barber h-100 shadow-lg text-center p-4 slide-in-left">
+                <div class="card-body d-flex flex-column align-items-center">
+                    <div class="card-icon-container">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4 class="card-title-barber">Caballeros</h4>
+                    <p class="card-text-barber">Registro centralizado de perfiles, membresías e historial de cortes de tus clientes.</p>
+                    <a href="/clientes" class="btn btn-gold mt-auto w-100">
+                        <i class="fas fa-cog me-2"></i>Gestionar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card card-barber h-100 shadow-lg text-center p-4 border-warning border-opacity-50 fade-in">
+                <div class="card-body d-flex flex-column align-items-center">
+                    <div class="card-icon-container text-warning">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h4 class="card-title-barber text-warning">Agenda</h4>
+                    <p class="card-text-barber">Control total de la programación diaria. Asigna servicios a barberos específicos.</p>
+                    <a href="/citas" class="btn btn-gold mt-auto w-100 border-warning text-warning">
+                        <i class="fas fa-eye me-2"></i>Ver Calendario
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card card-barber h-100 shadow-lg text-center p-4 slide-in-right">
+                <div class="card-body d-flex flex-column align-items-center">
+                    <div class="card-icon-container">
+                        <i class="fas fa-cash-register"></i>
+                    </div>
+                    <h4 class="card-title-barber">Caja</h4>
+                    <p class="card-text-barber">Procesa pagos rápidamente, genera facturas y revisa el historial de transacciones.</p>
+                    <a href="/facturas" class="btn btn-gold mt-auto w-100">
+                        <i class="fas fa-money-bill-wave me-2"></i>Cobrar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card card-barber h-100 shadow-lg text-center p-4 fade-in">
+                <div class="card-body d-flex flex-column align-items-center">
+                    <div class="card-icon-container">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h4 class="card-title-barber">Barberos</h4>
+                    <p class="card-text-barber">Gestiona tu equipo de profesionales, especialidades y horarios de trabajo.</p>
+                    <a href="/barberos" class="btn btn-gold mt-auto w-100">
+                        <i class="fas fa-users-cog me-2"></i>Administrar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card card-barber h-100 shadow-lg text-center p-4 fade-in">
+                <div class="card-body d-flex flex-column align-items-center">
+                    <div class="card-icon-container">
+                        <i class="fas fa-scissors"></i>
+                    </div>
+                    <h4 class="card-title-barber">Servicios</h4>
+                    <p class="card-text-barber">Catálogo completo de servicios con precios y tiempos estimados.</p>
+                    <a href="/servicios" class="btn btn-gold mt-auto w-100">
+                        <i class="fas fa-list me-2"></i>Catálogo
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card card-barber h-100 shadow-lg text-center p-4 fade-in">
+                <div class="card-body d-flex flex-column align-items-center">
+                    <div class="card-icon-container">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4 class="card-title-barber">Reportes</h4>
+                    <p class="card-text-barber">Análisis detallado de ingresos, citas y rendimiento del negocio.</p>
+                    <a href="/reportes" class="btn btn-gold mt-auto w-100">
+                        <i class="fas fa-analytics me-2"></i>Estadísticas
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row g-4">
+        <div class="col-md-3">
+            <div class="card bg-card border-gold shadow-card">
+                <div class="card-body text-center">
+                    <i class="fas fa-calendar-check text-gold fa-2x mb-3"></i>
+                    <h5 class="card-title text-gold-light">Citas Hoy</h5>
+                    <p class="card-text h4 text-white">12</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-card border-success shadow-card">
+                <div class="card-body text-center">
+                    <i class="fas fa-dollar-sign text-success fa-2x mb-3"></i>
+                    <h5 class="card-title text-success">Ingresos Mes</h5>
+                    <p class="card-text h4 text-white">$2,450</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-card border-info shadow-card">
+                <div class="card-body text-center">
+                    <i class="fas fa-users text-info fa-2x mb-3"></i>
+                    <h5 class="card-title text-info">Clientes Activos</h5>
+                    <p class="card-text h4 text-white">186</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-card border-warning shadow-card">
+                <div class="card-body text-center">
+                    <i class="fas fa-star text-warning fa-2x mb-3"></i>
+                    <h5 class="card-title text-warning">Servicios Populares</h5>
+                    <p class="card-text h4 text-white">Corte + Barba</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
