@@ -331,6 +331,9 @@
                 <i class="fas fa-cut me-2"></i>BarberSoft
             </a>
             <div class="navbar-nav ms-auto">
+                <a class="nav-link btn-back" href="/nuevo_servicio">
+                    <i class="fas fa-plus me-2"></i>Agregar Nuevo
+                </a>
                 <a class="nav-link btn-back" href="/dashboard">
                     <i class="fas fa-arrow-left me-2"></i>Volver al Panel
                 </a>
@@ -376,10 +379,20 @@
 
     <div class="container mb-5 pb-5">
         <div class="table-container">
-                    </a>
+            <div class="table-header">
+                <div class="table-title">
+                    <i class="fas fa-list-alt"></i>
+                    <h4>Servicios Disponibles</h4>
+                </div>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar servicio..." id="searchInput">
                 </div>
             </div>
-        </nav>
+            
+            <div class="table-responsive">
+                <table class="table table-premium" id="serviciosTable">
+                    <thead>
                         <tr>
                             <th>Servicio</th>
                             <th>Precio</th>

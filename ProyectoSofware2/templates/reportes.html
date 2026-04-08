@@ -318,6 +318,9 @@
                 <i class="fas fa-cut me-2"></i>BARBERSOFT
             </a>
             <div class="navbar-nav ms-auto">
+                <a class="nav-link btn-back" href="/nueva_factura">
+                    <i class="fas fa-plus me-2"></i>Agregar Factura
+                </a>
                 <a class="nav-link btn-back" href="/dashboard">
                     <i class="fas fa-arrow-left me-2"></i>Volver al Panel
                 </a>
@@ -351,15 +354,22 @@
                 <p class="stat-label">Servicios Realizados</p>
                 <h1 class="stat-value">{{ total_citas }}</h1>
             </div>
+        </div>
+    </div>
 
-        <div class="header-section">
-            <div class="container">
-                <div class="header-icon">
-                    <i class="fas fa-chart-line"></i>
+    <div class="container mb-5 pb-5">
+        <div class="table-container">
+            <div class="table-header">
+                <div class="table-icon">
+                    <i class="fas fa-receipt"></i>
                 </div>
-                <h2>Reportes de Rendimiento</h2>
-                <p class="slogan-premium">Análisis de Crecimiento y Finanzas</p>
+                <h4 class="table-title">Últimas Transacciones</h4>
             </div>
+            
+            <div class="table-responsive">
+                <table class="table table-premium">
+                    <thead>
+                        <tr>
                             <th>N° Factura</th>
                             <th>Cliente</th>
                             <th>Monto</th>
@@ -392,12 +402,6 @@
                                 </div>
                             </td>
                             <td>
-                                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                                    <h4 class="table-title">Últimas Transacciones</h4>
-                                    <a href="/nueva_factura" class="btn-gold">
-                                        <i class="fas fa-plus me-2"></i>Agregar Factura
-                                    </a>
-                                </div>
                                 <div class="date-container">
                                     <div class="date-icon">
                                         <i class="fas fa-calendar"></i>

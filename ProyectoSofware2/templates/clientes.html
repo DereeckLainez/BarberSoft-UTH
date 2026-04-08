@@ -283,21 +283,25 @@
         <div class="particle" style="top: 45%; left: 65%; animation-delay: 12s;"></div>
     </div>
 
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="/dashboard">
-                <i class="fas fa-cut me-2"></i>BarberSoft
-            </a>
-            <div class="navbar-nav ms-auto">
-                <a class="nav-link btn-back" href="/dashboard">
-                    <i class="fas fa-arrow-left me-2"></i>Volver al Panel
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/dashboard">
+                    <i class="fas fa-cut me-2"></i>BarberSoft
                 </a>
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link btn-back" href="/nuevo_cliente">
+                        <i class="fas fa-plus me-2"></i>Agregar Nuevo
+                    </a>
+                    <a class="nav-link btn-back" href="/dashboard">
+                        <i class="fas fa-arrow-left me-2"></i>Volver al Panel
+                    </a>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <div class="header-section">
-        <div class="container">
+        <div class="header-section">
+            <div class="container">
+                <div class="header-icon">
             <div class="header-icon">
                 <i class="fas fa-users"></i>
             </div>
@@ -325,24 +329,25 @@
                 <div class="stat-label">Satisfacción</div>
             </div>
         </div>
+    </div>
 
-        <div class="container">
-            <div class="stats-container">
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="stat-number">+12%</div>
-                    <div class="stat-label">Crecimiento Mensual</div>
+    <div class="container mb-5 pb-5">
+        <div class="table-container">
+            <div class="table-header">
+                <div class="table-title">
+                    <i class="fas fa-database"></i>
+                    <h4>Base de Datos de Caballeros</h4>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-user-plus"></i>
-                    </div>
-                    <div class="stat-number">4.9</div>
-                    <div class="stat-label">Satisfacción</div>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar cliente..." id="searchInput">
                 </div>
             </div>
+            
+            <div class="table-responsive">
+                <table class="table table-premium" id="clientesTable">
+                    <thead>
+                        <tr>
                             <th>ID</th>
                             <th>Cliente</th>
                             <th>Teléfono</th>

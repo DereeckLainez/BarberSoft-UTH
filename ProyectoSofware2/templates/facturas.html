@@ -356,21 +356,25 @@
         <div class="particle" style="top: 45%; left: 65%; animation-delay: 12s;"></div>
     </div>
 
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="/dashboard">
-                <i class="fas fa-cut me-2"></i>BARBERSOFT
-            </a>
-            <div class="navbar-nav ms-auto">
-                <a class="nav-link btn-back" href="/dashboard">
-                    <i class="fas fa-arrow-left me-2"></i>Volver al Menú
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/dashboard">
+                    <i class="fas fa-cut me-2"></i>BARBERSOFT
                 </a>
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link btn-back" href="/nueva_factura">
+                        <i class="fas fa-plus me-2"></i>Agregar Nuevo
+                    </a>
+                    <a class="nav-link btn-back" href="/dashboard">
+                        <i class="fas fa-arrow-left me-2"></i>Volver al Menú
+                    </a>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <div class="header-section">
-        <div class="container">
+        <div class="header-section">
+            <div class="container">
+                <div class="header-icon">
             <div class="header-icon">
                 <i class="fas fa-file-invoice-dollar"></i>
             </div>
@@ -407,10 +411,20 @@
 
     <div class="container mb-5 pb-5">
         <div class="table-container">
-                    </a>
+            <div class="table-header">
+                <div class="table-title">
+                    <i class="fas fa-receipt"></i>
+                    <h4>Historial de Transacciones</h4>
+                </div>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar factura..." id="searchInput">
                 </div>
             </div>
-        </nav>
+            
+            <div class="table-responsive">
+                <table class="table table-premium" id="facturasTable">
+                    <thead>
                         <tr>
                             <th>ID Factura</th>
                             <th>Cliente</th>
